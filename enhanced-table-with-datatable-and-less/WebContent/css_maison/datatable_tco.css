@@ -1,0 +1,54 @@
+table.dataTable.tableauAvance > thead > tr > th {
+  text-align: center;
+  color: white;
+  background-color: #414cff;
+  border-right: 1px solid black;
+  border-bottom: 0;
+}
+table.dataTable.tableauAvance > thead:first-child > tr:first-child > th {
+  border-top: 1px solid #111111;
+}
+table.dataTable.tableauAvance > thead > tr > th:first-child {
+  border-radius: 10px 0px 0px 0px;
+}
+table.dataTable.tableauAvance > thead > tr > th:last-child {
+  border-radius: 0px 10px 0px 0px;
+}
+.tableauAvance > thead > tr {
+  border-radius: 10px 10px 10px 10px;
+}
+.tableauAvance > tbody > tr > td {
+  border-right: 1px solid black;
+}
+.tableauAvance > tbody > tr > td:first-child {
+  border-left: 1px solid black;
+}
+.conteneurTableau .dataTables_wrapper .dataTables_paginate .paginate_button,
+.conteneurTableau .dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
+.conteneurTableau .dataTables_wrapper .dataTables_paginate .paginate_button.previous,
+.conteneurTableau .dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.conteneurTableau .dataTables_wrapper .dataTables_paginate .paginate_button.next {
+  background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #414cff 70%, #dddddd 100%) repeat scroll 0 0;
+  border: 1px solid black;
+  color: #ffffff !important;
+  font-weight: bold;
+  cursor: default;
+  margin-left: 0;
+}
+.conteneurTableau .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+  background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #414cff 0%, #414cff 100%) repeat scroll 0 0;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}
+.conteneurTableau .dataTables_wrapper .dataTables_paginate .paginate_button.previous::before {
+  content: "< ";
+}
+.conteneurTableau .dataTables_wrapper .dataTables_paginate .paginate_button.previous {
+  border-radius: 5px 0 0 5px;
+}
+.conteneurTableau .dataTables_wrapper .dataTables_paginate .paginate_button.next::after {
+  content: " >";
+}
+.conteneurTableau .dataTables_wrapper .dataTables_paginate .paginate_button.next {
+  border-radius: 0 5px 5px 0;
+}

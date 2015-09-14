@@ -1,0 +1,132 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+	<!-- DataTables CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/jquery.dataTables.css">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap-3.2.0.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap-theme-3.2.0.min.css">
+	
+	<!-- maison -->
+	<link rel="stylesheet" type="text/css" href="../css_maison/datatable_tco.css">
+  
+	<!-- jQuery -->
+	<script type="text/javascript" charset="utf8" src="../js_externe/jquery.js"></script>
+	<!-- DataTables -->
+	<script type="text/javascript" charset="utf8" src="../js_externe/jquery.dataTables.js"></script>
+	<!-- Bootstrap -->
+	<script type="text/javascript" charset="utf8" src="../js_externe/bootstrap-3.2.0-min.js"></script>
+	
+	<!-- maison -->
+	<script type="text/javascript" charset="utf8" src="../js_maison/datatableUtil.js"></script>
+	
+	<script type="text/javascript">
+	$(document).ready(function() {
+	
+		var l_formatsDesMetasDesColonnes = ['','','date_JJMMAAAA',''];
+		var colonneATrieInit = '2';
+		var initSort = [];
+		initSort[0] = [colonneATrieInit, 'asc'];//asc/desc
+	
+	
+		var l_datatable = $('#example').DataTable({
+			 'oLanguage': {
+				'sProcessing':'Traitement en cours...',
+				'sSearch':'recherche',
+				'sLengthMenu':'Afficher _MENU_ éléments',
+				'sInfo':'Affichage de _START_ à _END_ sur _TOTAL_ éléments',
+				'sInfoEmpty':'Aucune donnée é afficher',
+				'sInfoFiltered':'X éléments affichés au total',
+				'sInfoPostFix': '',
+				'sLoadingRecords':'chargement en cours...',
+				'sZeroRecords':'aucun élément à afficher',
+				'sEmptyTable':'Aucune donnée dans le tableau',
+				'oPaginate': {
+					'sFirst':'Premier',
+					'sPrevious':'Précédent',
+					'sNext':'Suivant',
+					'sLast':'Dernier'
+				},
+				'oAria': {
+					'sSortAscending':'effectuer un tri croissant',
+					'sSortDescending':'effectuer un tri décroissant'
+				}
+			},
+			'bFilter':false,
+			'bSort':true,
+			'aaSorting':initSort,
+			//'aoColumns':creerAocColumns('0000'),
+			'aoColumns':[
+				null,
+				null,
+				null,
+				{ "bSortable": false }
+			],
+			'pageLength':parseInt(10),
+			'columnDefs': [{
+					'type':'',
+					'targets':0
+				},
+				{
+					'type':'',
+					'targets':1
+				},
+				{
+					'type':getAlgorithmePourTri("date_jjmmaa"),
+					'targets':2
+				},
+				{
+					'type':'',
+					'targets':3
+				}
+			]
+			 
+				
+		});
+	} );
+	
+	
+	/*
+	pageContext.getOut().print("    l_dataTable.on( 'length.dt', function ( e, settings, len ) {");//ici on définit la réaction lorsque l'utilisateur change le nombre de lignes qu'il veut voir afficher
+            pageContext.getOut().print("        setValue('"+getIdChampCache()+"', len);");//on met à jour le champ caché pour récupérer cette valeur côté serveur avec le binding de spring
+            pageContext.getOut().print("        initialiserLesIdDesBoutonsDeNavigationEntrePage('"+getIdUtilise()+"');");//on ne doit pas l'utiliser ici car c'est trop tôt, il faut le faire ailleurs.
+            pageContext.getOut().print("    } );");
+            pageContext.getOut().print("    l_dataTable.on( 'draw.dt', function () {");
+            initialiserLesIdDesElementsDeNavigation();
+            pageContext.getOut().print("    } );");
+	*/
+	</script>
+	<style>
+		.conteneurTableau {
+			margin-left:auto;
+			margin-right:auto;
+			width:1000px;
+			border-radius:10px;
+			border:1px solid #e0e0e0;
+			padding:10px;
+			margin-top:50px;
+		}
+	</style>
+</head>
+<body>
+	<div class="conteneurTableau">
+		<table id="example" class="tableauAvance display table table-striped no-footer">
+			<thead><tr><th>Prénom </th><th>Nom</th><th>Date de naissance</th><th>Fonction</th></tr></thead>
+			<tbody>
+			<tr><td>Jean-pierre </td><td>Torni		</td><td data-order="04/01/1984">04/01/1984</td><td>Développeur java				</td></tr>
+			<tr><td>Thomas 		</td><td>Colomba	</td><td data-order="09/01/1984">09/01/1984</td><td>Développeur web					</td></tr>
+			<tr><td>Alain 		</td><td>Bernard	</td><td data-order="01/03/1984">01/03/1984</td><td>Chef de projet					</td></tr>
+			<tr><td>Jeanne 		</td><td>Cina		</td><td data-order="15/10/1987">15/10/1987</td><td>Responsable de la traduction	</td></tr>
+			<tr><td>Pierre 		</td><td>Aldon		</td><td data-order="15/08/1982">15/08/1982</td><td>Développeur .Net				</td></tr>
+			<tr><td>Rémi 		</td><td>Mena		</td><td data-order="12/10/1990">12/10/1990</td><td>Directeur du département R&D	</td></tr>
+			<tr><td>Jean 		</td><td>Genty		</td><td data-order="26/03/1995">26/03/1995</td><td>Stagiaire						</td></tr>
+			<tr><td>Cédric 		</td><td>Bardo		</td><td data-order="07/12/1972">07/12/1972</td><td>Développeur	applications mobiles</td></tr>
+			<tr><td>Guillaume	</td><td>Lumbi		</td><td data-order="07/11/1972">07/11/1972</td><td>Développeur PHP					</td></tr>
+			<tr><td>Jérome 		</td><td>Dunga		</td><td data-order="11/12/1974">11/12/1974</td><td>Secrétaire de direction			</td></tr>
+			<tr><td>Mélissa 	</td><td>Larne		</td><td data-order="26/05/1982">26/05/1982</td><td>Administrateur système			</td></tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
+
